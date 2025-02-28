@@ -29,11 +29,7 @@ import 'timeline_theme.dart';
 class IndicatorThemeData with Diagnosticable {
   /// Creates a theme that can be used for [IndicatorTheme] or
   /// [TimelineThemeData.indicatorTheme].
-  const IndicatorThemeData({
-    this.color,
-    this.size,
-    this.position,
-  });
+  const IndicatorThemeData({this.color, this.size, this.position});
 
   /// The color of [DotIndicator]s and indicators inside [TimelineNode]s, and so
   /// forth.
@@ -50,11 +46,7 @@ class IndicatorThemeData with Diagnosticable {
 
   /// Creates a copy of this object with the given fields replaced with the new
   /// values.
-  IndicatorThemeData copyWith({
-    Color? color,
-    double? size,
-    double? position,
-  }) {
+  IndicatorThemeData copyWith({Color? color, double? size, double? position}) {
     return IndicatorThemeData(
       color: color ?? this.color,
       size: size ?? this.size,
@@ -68,7 +60,10 @@ class IndicatorThemeData with Diagnosticable {
   ///
   /// {@macro dart.ui.shadow.lerp}
   static IndicatorThemeData lerp(
-      IndicatorThemeData? a, IndicatorThemeData? b, double t) {
+    IndicatorThemeData? a,
+    IndicatorThemeData? b,
+    double t,
+  ) {
     return IndicatorThemeData(
       color: Color.lerp(a?.color, b?.color, t),
       size: lerpDouble(a?.size, b?.size, t),
@@ -77,7 +72,7 @@ class IndicatorThemeData with Diagnosticable {
   }
 
   @override
-  int get hashCode => hashValues(color, size, position);
+  int get hashCode => Object.hash(color, size, position);
 
   @override
   bool operator ==(Object other) {
@@ -106,11 +101,8 @@ class IndicatorThemeData with Diagnosticable {
 class IndicatorTheme extends InheritedTheme {
   /// Creates an indicator theme that controls the color and size for
   /// [DotIndicator]s, indicators inside [TimelineNode]s.
-  const IndicatorTheme({
-    Key? key,
-    required this.data,
-    required Widget child,
-  }) : super(key: key, child: child);
+  const IndicatorTheme({Key? key, required this.data, required Widget child})
+    : super(key: key, child: child);
 
   /// The properties for descendant [DotIndicator]s, indicators inside
   /// [TimelineNode]s.
